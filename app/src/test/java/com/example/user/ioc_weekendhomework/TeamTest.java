@@ -30,6 +30,11 @@ public class TeamTest {
     }
 
     @Test
+    public void canGetName(){
+        assertEquals("Team Brazil", team.getName());
+    }
+
+    @Test
     public void teamIsEmptyToBegin(){
         assertEquals(0, team.getMembers().size());
     }
