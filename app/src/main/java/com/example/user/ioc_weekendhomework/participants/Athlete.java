@@ -9,9 +9,9 @@ import java.util.*;
  */
 
 public class Athlete implements Competitors{
-    String name;
-    String country;
-    ArrayList<Medal> medals;
+    private String name;
+    private String country;
+    private ArrayList<Medal> medals;
 
     public Athlete(String name, String country){
         this.name = name;

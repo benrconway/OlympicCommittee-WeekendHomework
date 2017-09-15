@@ -1,7 +1,7 @@
 package com.example.user.ioc_weekendhomework;
 
-import com.example.user.ioc_weekendhomework.participants.Athlete;
 import com.example.user.ioc_weekendhomework.participants.Team;
+import com.example.user.ioc_weekendhomework.participants.Athlete;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -45,5 +45,11 @@ public class TeamTest {
         team.add(athlete1);
         team.add(athlete2);
         assertEquals(1, team.getMembers().size());
+    }
+
+    @Test
+    public void canGetMemberByIndex(){
+        team.add(athlete1);
+        assertEquals("Bonny", team.memberByIndex(0).getName());
     }
 }

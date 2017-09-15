@@ -5,7 +5,7 @@ package com.example.user.ioc_weekendhomework.medals;
  */
 
 public class Medal {
-    Enum<MedalType> medalType;
+    private Enum<MedalType> medalType;
 
     public Medal(MedalType medalType){
         this.medalType = medalType;

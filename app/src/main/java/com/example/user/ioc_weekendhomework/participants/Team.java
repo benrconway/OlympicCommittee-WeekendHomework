@@ -7,17 +7,26 @@ import java.util.ArrayList;
  */
 
 public class Team implements Competitors{
-    String country;
-    ArrayList<Competitors> members;
+    private String name;
+    private String country;
+    private ArrayList<Competitors> members;
 
     public Team(String country){
         this.country = country;
+        this.name = "Team " + country;
         this.members = new ArrayList<>();
     }
+
+
 
     @Override
     public String getCountry() {
         return country;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Competitors> getMembers() {
@@ -36,5 +45,9 @@ public class Team implements Competitors{
             canJoin = true;
         }
         return canJoin;
+    }
+
+    public Competitors memberByIndex(int index) {
+        return members.get(index);
     }
 }
