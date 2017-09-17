@@ -4,6 +4,7 @@ import com.example.user.ioc_weekendhomework.medals.Medal;
 import com.example.user.ioc_weekendhomework.medals.MedalType;
 import com.example.user.ioc_weekendhomework.participants.Athlete;
 import com.example.user.ioc_weekendhomework.participants.Competitors;
+import com.example.user.ioc_weekendhomework.participants.Team;
 
 import java.util.ArrayList;
 
@@ -16,13 +17,15 @@ public class Event {
     private ArrayList<Medal> medals;
     private String name;
     private Referee referee;
+    private int athleteCapacity;
 
-    public Event(String name, Referee referee){
+    public Event(String name, Referee referee, int athleteCapacity){
         this.name = name;
         this.referee = referee;
         this.competitors = new ArrayList<>();
         this.medals = new ArrayList<>();
         this.setUpMedals();
+        this.athleteCapacity = athleteCapacity;
     }
 
     public ArrayList<Competitors> getCompetitors() {
@@ -76,4 +79,24 @@ public class Event {
     }
 
 
+    public void addIndividual(Competitors athlete) {
+        if(!atMaximumEntrants()) {
+            competitors.add(athlete);
+        }
+    }
+
+    public void addTeam(Team team) {
+        for (Competitors athlete: team.getMembers()) {
+            if (!atMaximumEntrants()) {
+                this.competitors.add(athlete);
+            }
+        }
+    }
+
+    private boolean atMaximumEntrants(){
+        if (competitors.size() >= athleteCapacity ){
+            return true;
+        }
+        return false;
+    }
 }

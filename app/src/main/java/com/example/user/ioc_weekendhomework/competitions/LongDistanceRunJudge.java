@@ -8,7 +8,8 @@ import java.util.ArrayList;
  * Created by user on 15/09/2017.
  */
 
-public class Judge implements Referee {
+public class LongDistanceRunJudge implements Referee {
+
 
     @Override
     public Competitors judgeEvent() {

@@ -1,9 +1,12 @@
 package com.example.user.ioc_weekendhomework;
 
 import com.example.user.ioc_weekendhomework.competitions.Event;
+import com.example.user.ioc_weekendhomework.competitions.LongDistanceRunJudge;
+import com.example.user.ioc_weekendhomework.competitions.Referee;
 import com.example.user.ioc_weekendhomework.medals.Medal;
 import com.example.user.ioc_weekendhomework.medals.MedalType;
 import com.example.user.ioc_weekendhomework.participants.Athlete;
+import com.example.user.ioc_weekendhomework.participants.Competitors;
 import com.example.user.ioc_weekendhomework.participants.Team;
 
 import org.junit.Before;
@@ -23,21 +26,23 @@ public class EventTest {
     Athlete athlete4;
     Team team1;
     Team team2;
+    Referee trackJudge;
 
     @Before
     public void before(){
-        athlete1 = new Athlete("Johnny", "USA");
-        athlete2 = new Athlete("Paula", "Australia");
-        athlete3 = new Athlete("George", "Australia");
-        athlete4 = new Athlete("Georgina", "USSR");
+        athlete1 = new Athlete("Johnny", "USA", 60, 65, 80, 70);
+        athlete2 = new Athlete("Paula", "Australia", 70, 65, 75, 90);
+        athlete3 = new Athlete("George", "Australia", 80, 70, 78, 65);
+        athlete4 = new Athlete("Georgina", "USSR", 90, 60, 50, 90);
         team1 = new Team("Australia");
         team2 = new Team("USA");
-        event = new Event("Beer Drinking");
+        trackJudge = new LongDistanceRunJudge();
+        event = new Event("Track & Field", trackJudge, 3);
     }
 
     @Test
     public void canGetEventName() {
-        assertEquals("Beer Drinking", event.getName());
+        assertEquals("Track & Field", event.getName());
     }
 
     @Test
@@ -68,8 +73,36 @@ public class EventTest {
 
     @Test
     public void eventCanTakeInAJudgeToScoreAthletes(){
-
+        assertEquals(trackJudge, event.getReferee());
     }
 
+    @Test
+    public void canTakeInCompetitorsIndividually(){
+        event.addIndividual(athlete1);
+        assertEquals(1, event.getCompetitors().size());
+    }
+
+    @Test
+    public void canTakeInTeamsOfAthletes(){
+        team1.add(athlete2);
+        team1.add(athlete3);
+        event.addTeam(team1);
+        assertEquals(2, event.getCompetitors().size());
+    }
+
+    @Test
+    public void canLimitPlayerEntrants(){
+        team1.add(athlete2);
+        team1.add(athlete3);
+        event.addTeam(team1);
+        event.addIndividual(athlete1);
+        event.addIndividual(athlete4);
+        assertEquals(3, event.getCompetitors().size());
+    }
+
+    @Test
+    public void canUseJudgeToDeclareMedals(){
+
+    }
 
 }

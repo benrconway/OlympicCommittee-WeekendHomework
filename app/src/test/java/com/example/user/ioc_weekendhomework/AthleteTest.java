@@ -17,7 +17,7 @@ public class AthleteTest {
 
     @Before
     public void before(){
-        athlete1 = new Athlete("George", "Canada");
+        athlete1 = new Athlete("George", "Canada", 72, 40, 54, 80);
         medal = new Medal(MedalType.GOLD);
     }
 
@@ -34,6 +34,14 @@ public class AthleteTest {
     @Test
     public void canGetMedals(){
         assertEquals(0, athlete1.getMedals().size());
+    }
+
+    @Test
+    public void attributesAreGettable(){
+        assertEquals(72, athlete1.getStrength());
+        assertEquals(40, athlete1.getAgility());
+        assertEquals(54, athlete1.getCoordination());
+        assertEquals(80, athlete1.getConstituion());
     }
 
     @Test
