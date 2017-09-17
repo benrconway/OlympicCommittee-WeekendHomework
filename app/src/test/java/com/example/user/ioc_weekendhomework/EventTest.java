@@ -3,6 +3,7 @@ package com.example.user.ioc_weekendhomework;
 import com.example.user.ioc_weekendhomework.competitions.Event;
 import com.example.user.ioc_weekendhomework.competitions.LongDistanceRunJudge;
 import com.example.user.ioc_weekendhomework.competitions.Referee;
+import com.example.user.ioc_weekendhomework.competitions.StrengthJudge;
 import com.example.user.ioc_weekendhomework.medals.Medal;
 import com.example.user.ioc_weekendhomework.medals.MedalType;
 import com.example.user.ioc_weekendhomework.participants.Athlete;
@@ -36,7 +37,7 @@ public class EventTest {
         athlete4 = new Athlete("Georgina", "USSR", 90, 60, 50, 90, 60);
         team1 = new Team("Australia");
         team2 = new Team("USA");
-        trackJudge = new LongDistanceRunJudge();
+        trackJudge = new StrengthJudge();
         event = new Event("Track & Field", trackJudge, 3);
     }
 
@@ -127,11 +128,9 @@ public class EventTest {
     }
 
 
+    @Test
+    public void canRunCompetitionCompeteIndividualEvent(){
+        
 
-
-//    @Test
-//    public void canUseJudgeToDeclareMedals(){
-//
-//    }
-
+    }
 }

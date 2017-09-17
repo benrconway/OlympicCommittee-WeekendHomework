@@ -18,7 +18,7 @@ public class StrengthJudge implements Referee {
 
     @Override
     public int judgeAthletePerformance(Competitors athlete) {
-        return 0;
+        return athlete.getStrength();
     }
 
 }
