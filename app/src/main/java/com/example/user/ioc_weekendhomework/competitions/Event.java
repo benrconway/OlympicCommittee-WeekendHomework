@@ -66,16 +66,20 @@ public class Event {
 
     public void giveMedal(MedalType medal, Athlete competitor){
         Medal medalToGive = getMedalByType(medal);
-        removeMedalByType(medal);
         competitor.receive(medalToGive);
+        removeMedalFromEvent(medalToGive);
     }
 
-    private void removeMedalByType(MedalType type) {
-        for (Medal medal: medals){
-            if(medal.getMedalType() == type){
-                medals.remove(medal);
-            }
-        }
+//    private void removeMedalByType(MedalType type) {
+//        for (Medal medal: medals){
+//            if(medal.getMedalType() == type){
+//                medals.remove(medal);
+//            }
+//        }
+//    }
+
+    private void removeMedalFromEvent(Medal medal) {
+        medals.remove(medal);
     }
 
 
@@ -98,5 +102,39 @@ public class Event {
             return true;
         }
         return false;
+    }
+
+    public String compete(ArrayList<Competitors> competitors){
+        Athlete firstPlace = null;
+        Athlete secondPlace = null;
+        Athlete thirdPlace = null;
+        int firstScore = 0;
+        int secondScore = 0;
+        int thirdScore = 0;
+        for(Competitors athlete: competitors){
+            int currentStrength = athlete.getStrength();
+            if(currentStrength > firstScore){
+                firstPlace = athlete;
+                firstScore = currentStrength;
+            }else  if((currentStrength < firstScore) && (currentStrength > secondScore)){
+                    secondPlace = athlete;
+                    secondScore = currentStrength;
+                }else{
+                    if ((currentStrength < secondScore) && (currentStrength > thirdScore)){
+                        thirdPlace = athlete;
+                        thirdScore = currentStrength;
+                }
+            }
+        }
+        giveMedal(MedalType.GOLD, firstPlace);
+        giveMedal(MedalType.SILVER, secondPlace);
+        giveMedal(MedalType.BRONZE, thirdPlace);
+
+        return "After intesnse competition, first place and gold go to " + firstPlace.getName() +
+                " of " + firstPlace.getCountry() +". Second place and silver for "
+                + secondPlace.getName() + " of " + secondPlace.getCountry() + ", and coming in" +
+                "third and taking away the bronze is " + thirdPlace.getName() + " of " +
+                thirdPlace.getCountry()+".";
+    }
     }
 }

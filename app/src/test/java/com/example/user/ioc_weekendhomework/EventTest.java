@@ -64,11 +64,27 @@ public class EventTest {
     }
 
     @Test
-    public void givingAMedalRemovesItFromTheEvent(){
+    public void canAwardSilver(){
         event.giveMedal(MedalType.SILVER, athlete1);
         assertEquals(2, event.getMedals().size());
         assertEquals(MedalType.GOLD, event.getMedals().get(0).getMedalType());
         assertEquals(MedalType.BRONZE, event.getMedals().get(1).getMedalType());
+    }
+
+    @Test
+    public void canAwardGold(){
+        event.giveMedal(MedalType.GOLD, athlete1);
+        assertEquals(2, event.getMedals().size());
+        assertEquals(MedalType.SILVER, event.getMedals().get(0).getMedalType());
+        assertEquals(MedalType.BRONZE, event.getMedals().get(1).getMedalType());
+    }
+
+    @Test
+    public void canAwardBronze(){
+        event.giveMedal(MedalType.BRONZE, athlete1);
+        assertEquals(2, event.getMedals().size());
+        assertEquals(MedalType.GOLD, event.getMedals().get(0).getMedalType());
+        assertEquals(MedalType.SILVER, event.getMedals().get(1).getMedalType());
     }
 
     @Test
@@ -100,9 +116,12 @@ public class EventTest {
         assertEquals(3, event.getCompetitors().size());
     }
 
-    @Test
-    public void canUseJudgeToDeclareMedals(){
 
-    }
+
+
+//    @Test
+//    public void canUseJudgeToDeclareMedals(){
+//
+//    }
 
 }
