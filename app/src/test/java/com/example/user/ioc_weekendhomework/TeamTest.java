@@ -20,8 +20,8 @@ public class TeamTest {
     @Before
     public void before() {
         team = new Team("Brazil");
-        athlete1 = new Athlete("Bonny", "Brazil", 70, 70, 70, 70);
-        athlete2 = new Athlete("Tickles", "UK", 71, 71, 71, 71);
+        athlete1 = new Athlete("Bonny", "Brazil", 70, 70, 70, 70, 70);
+        athlete2 = new Athlete("Tickles", "UK", 71, 71, 71, 71, 71);
     }
 
     @Test

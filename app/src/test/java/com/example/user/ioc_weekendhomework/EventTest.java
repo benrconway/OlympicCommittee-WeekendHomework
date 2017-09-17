@@ -30,10 +30,10 @@ public class EventTest {
 
     @Before
     public void before(){
-        athlete1 = new Athlete("Johnny", "USA", 60, 65, 80, 70);
-        athlete2 = new Athlete("Paula", "Australia", 70, 65, 75, 90);
-        athlete3 = new Athlete("George", "Australia", 80, 70, 78, 65);
-        athlete4 = new Athlete("Georgina", "USSR", 90, 60, 50, 90);
+        athlete1 = new Athlete("Johnny", "USA", 60, 65, 80, 70,70);
+        athlete2 = new Athlete("Paula", "Australia", 70, 65, 75, 90, 80);
+        athlete3 = new Athlete("George", "Australia", 80, 70, 78, 65, 70);
+        athlete4 = new Athlete("Georgina", "USSR", 90, 60, 50, 90, 60);
         team1 = new Team("Australia");
         team2 = new Team("USA");
         trackJudge = new LongDistanceRunJudge();

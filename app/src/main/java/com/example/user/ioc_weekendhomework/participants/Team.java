@@ -10,14 +10,22 @@ public class Team implements Competitors{
     private String name;
     private String country;
     private ArrayList<Competitors> members;
+    private int strength;
+    private int agility;
+    private int coordination;
+    private int constitution;
+    private int speed;
 
     public Team(String country){
         this.country = country;
         this.name = "Team " + country;
         this.members = new ArrayList<>();
+        this.strength = 0;
+        this.agility = 0;
+        this.coordination = 0;
+        this.constitution = 0;
+        this.speed = 0;
     }
-
-
 
     @Override
     public String getCountry() {
@@ -27,6 +35,26 @@ public class Team implements Competitors{
     @Override
     public String getName() {
         return name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getCoordination() {
+        return coordination;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     public ArrayList<Competitors> getMembers() {

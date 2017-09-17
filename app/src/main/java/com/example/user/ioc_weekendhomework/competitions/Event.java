@@ -112,17 +112,17 @@ public class Event {
         int secondScore = 0;
         int thirdScore = 0;
         for(Competitors athlete: competitors){
-            int currentStrength = athlete.getStrength();
-            if(currentStrength > firstScore){
+            int currentScore = athlete.getStrength();
+            if(currentScore > firstScore){
                 firstPlace = athlete;
-                firstScore = currentStrength;
-            }else  if((currentStrength < firstScore) && (currentStrength > secondScore)){
+                firstScore = currentScore;
+            }else  if((currentScore < firstScore) && (currentScore > secondScore)){
                     secondPlace = athlete;
-                    secondScore = currentStrength;
+                    secondScore = currentScore;
                 }else{
-                    if ((currentStrength < secondScore) && (currentStrength > thirdScore)){
+                    if ((currentScore < secondScore) && (currentScore > thirdScore)){
                         thirdPlace = athlete;
-                        thirdScore = currentStrength;
+                        thirdScore = currentScore;
                 }
             }
         }

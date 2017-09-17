@@ -16,9 +16,10 @@ public class Athlete implements Competitors{
     private int agility;
     private int coordination;
     private int constituion;
+    private int speed;
 
     public Athlete(String name, String country,
-                   int strength, int agility, int coordination, int constituion){
+                   int strength, int agility, int coordination, int constituion, int speed){
         this.name = name;
         this.country = country;
         this.medals = new ArrayList<>();
@@ -26,6 +27,7 @@ public class Athlete implements Competitors{
         this.strength = strength;
         this.coordination = coordination;
         this.constituion = constituion;
+        this.speed = speed;
 
 //        Random random = new Random();
 //        this.strength = random.nextInt(100);
@@ -61,6 +63,10 @@ public class Athlete implements Competitors{
 
     public int getConstituion() {
         return constituion;
+    }
+
+    public int getSpeed(){
+        return speed;
     }
 
     public void receive(Medal medal) {

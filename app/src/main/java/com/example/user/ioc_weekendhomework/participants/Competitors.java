@@ -7,4 +7,9 @@ package com.example.user.ioc_weekendhomework.participants;
 public interface Competitors {
     String getCountry();
     String getName();
+    int getStrength();
+    int getAgility();
+    int getCoordination();
+    int getConstitution();
+    int getSpeed();
 }

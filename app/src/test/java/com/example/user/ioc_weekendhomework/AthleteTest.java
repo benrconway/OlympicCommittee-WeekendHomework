@@ -17,7 +17,7 @@ public class AthleteTest {
 
     @Before
     public void before(){
-        athlete1 = new Athlete("George", "Canada", 72, 40, 54, 80);
+        athlete1 = new Athlete("George", "Canada", 72, 40, 54, 80, 60);
         medal = new Medal(MedalType.GOLD);
     }
 
