@@ -119,9 +119,12 @@ public class Event {
         for(Competitors competitor: competitors){
             int currentScore = referee.judgeAthletePerformance(competitor);
             if(currentScore > firstScore){
+                thirdPlace = secondPlace;
+                secondPlace = firstPlace;
                 firstPlace = competitor;
                 firstScore = currentScore;
             }else  if((currentScore < firstScore) && (currentScore > secondScore)){
+                    thirdPlace = secondPlace;
                     secondPlace = competitor;
                     secondScore = currentScore;
                 }else{
@@ -131,15 +134,17 @@ public class Event {
                 }
             }
         }
-        giveMedal(MedalType.GOLD, firstPlace);
-        giveMedal(MedalType.SILVER, secondPlace);
-        giveMedal(MedalType.BRONZE, thirdPlace);
+        if(firstPlace != null ) { giveMedal(MedalType.GOLD, firstPlace); }
+        if(secondPlace != null ) { giveMedal(MedalType.SILVER, secondPlace); }
+        if(thirdPlace != null ) {giveMedal(MedalType.BRONZE, thirdPlace); }
 
-        return "After intense competition, first place and gold go to " + firstPlace.getName() +
+        if(thirdPlace !=null){ return "After intense competition, first place and gold go to " + firstPlace.getName() +
                 " of " + firstPlace.getCountry() +". Second place and silver for "
                 + secondPlace.getName() + " of " + secondPlace.getCountry() + ", and coming in" +
                 "third and taking away the bronze is " + thirdPlace.getName() + " of " +
-                thirdPlace.getCountry()+".";
+                thirdPlace.getCountry()+".";} else { return "After intense competition, first place and gold go to " + firstPlace.getName() +
+                    " of " + firstPlace.getCountry() +". Second place and silver for "
+                    + secondPlace.getName() + " of " + secondPlace.getCountry() + ".";}
     }
 
 }

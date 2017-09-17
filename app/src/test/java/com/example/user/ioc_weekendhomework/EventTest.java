@@ -130,7 +130,27 @@ public class EventTest {
 
     @Test
     public void canRunCompetitionCompeteIndividualEvent(){
-        
+        event.addIndividual(athlete1);
+        event.addIndividual(athlete3);
+        event.addIndividual(athlete4);
+        String expected = "After intense competition, first place and gold go to Georgina of " +
+                "USSR. Second place and silver for George of Australia, and coming in" +
+                "third and taking away the bronze is Johnny of USA.";
+        assertEquals(expected, event.compete());
+    }
+
+    @Test
+    public void canRunTeamCompetitions(){
+        Athlete athlete5 = new Athlete("Bob", "USA", 100, 90, 90 , 90, 10);
+        team1.add(athlete2);
+        team1.add(athlete3);
+        team2.add(athlete1);
+        team2.add(athlete5);
+        event.addGroup(team1);
+        event.addGroup(team2);
+        String expected = "After intense competition, first place and gold go to Team USA of USA" +
+                ". Second place and silver for Team Australia of Australia.";
+        assertEquals(expected, event.compete() );
 
     }
 }
