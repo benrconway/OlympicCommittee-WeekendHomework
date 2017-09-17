@@ -15,11 +15,11 @@ public class Event {
     private ArrayList<Competitors> competitors;
     private ArrayList<Medal> medals;
     private String name;
-//    private Referee referee;
+    private Referee referee;
 
-    public Event(String name){
+    public Event(String name, Referee referee){
         this.name = name;
-//        this.referee = referee;
+        this.referee = referee;
         this.competitors = new ArrayList<>();
         this.medals = new ArrayList<>();
         this.setUpMedals();
@@ -32,10 +32,10 @@ public class Event {
     public String getName() {
         return name;
     }
-//
-//    public Referee getReferee() {
-//        return referee;
-//    }
+
+    public Referee getReferee() {
+        return referee;
+    }
 
     public ArrayList<Medal> getMedals() {
         return medals;

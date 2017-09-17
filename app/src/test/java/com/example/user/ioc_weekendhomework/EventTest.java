@@ -44,6 +44,7 @@ public class EventTest {
     public void canGetMedals() {
         assertEquals(3, event.getMedals().size());
     }
+
     @Test
     public void getMedalByType() {
         Medal newMedal = event.getMedalByType(MedalType.GOLD);
@@ -55,9 +56,18 @@ public class EventTest {
         event.giveMedal(MedalType.GOLD, athlete1);
         assertEquals(1, athlete1.getMedals().size());
         assertEquals(MedalType.GOLD, athlete1.getMedals().get(0).getMedalType());
+    }
+
+    @Test
+    public void givingAMedalRemovesItFromTheEvent(){
+        event.giveMedal(MedalType.SILVER, athlete1);
         assertEquals(2, event.getMedals().size());
+        assertEquals(MedalType.GOLD, event.getMedals().get(0).getMedalType());
         assertEquals(MedalType.BRONZE, event.getMedals().get(1).getMedalType());
-        assertEquals(MedalType.SILVER, event.getMedals().get(0).getMedalType());
+    }
+
+    @Test
+    public void eventCanTakeInAJudgeToScoreAthletes(){
 
     }
 
