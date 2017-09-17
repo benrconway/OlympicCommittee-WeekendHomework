@@ -15,12 +15,10 @@ public class StrengthJudge implements Referee {
 
     }
 
+
     @Override
-    public Competitors judgeEvent() {
-        return null;
+    public int judgeAthletePerformance(Competitors athlete) {
+        return 0;
     }
 
-//    @Override
-//    public void judgeEvent(ArrayList<Athlete> athletes) {
-//
 }

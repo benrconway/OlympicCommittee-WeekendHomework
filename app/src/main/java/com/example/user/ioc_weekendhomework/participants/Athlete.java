@@ -61,7 +61,7 @@ public class Athlete implements Competitors{
         return coordination;
     }
 
-    public int getConstituion() {
+    public int getConstitution() {
         return constituion;
     }
 

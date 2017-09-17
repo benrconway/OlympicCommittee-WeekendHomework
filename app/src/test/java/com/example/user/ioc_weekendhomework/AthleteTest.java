@@ -41,7 +41,8 @@ public class AthleteTest {
         assertEquals(72, athlete1.getStrength());
         assertEquals(40, athlete1.getAgility());
         assertEquals(54, athlete1.getCoordination());
-        assertEquals(80, athlete1.getConstituion());
+        assertEquals(80, athlete1.getConstitution());
+        assertEquals(60, athlete1.getSpeed());
     }
 
     @Test

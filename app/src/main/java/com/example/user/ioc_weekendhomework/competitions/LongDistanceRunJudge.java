@@ -12,7 +12,7 @@ public class LongDistanceRunJudge implements Referee {
 
 
     @Override
-    public Competitors judgeEvent() {
-        return null;
+    public int judgeAthletePerformance(Competitors athlete) {
+        return 0;
     }
 }

@@ -16,12 +16,15 @@ public class TeamTest {
     Team team;
     Athlete athlete1;
     Athlete athlete2;
+    Athlete athlete3;
 
     @Before
     public void before() {
         team = new Team("Brazil");
         athlete1 = new Athlete("Bonny", "Brazil", 70, 70, 70, 70, 70);
-        athlete2 = new Athlete("Tickles", "UK", 71, 71, 71, 71, 71);
+        athlete2 = new Athlete("George", "Brazil", 20, 100, 60, 80, 90);
+        athlete3 = new Athlete("Tickles", "UK", 71, 71, 71, 71, 71);
+
     }
 
     @Test
@@ -48,7 +51,7 @@ public class TeamTest {
     @Test
     public void athletesCannotJoinADifferentCountrysTeam(){
         team.add(athlete1);
-        team.add(athlete2);
+        team.add(athlete3);
         assertEquals(1, team.getMembers().size());
     }
 
@@ -56,5 +59,17 @@ public class TeamTest {
     public void canGetMemberByIndex(){
         team.add(athlete1);
         assertEquals("Bonny", team.memberByIndex(0).getName());
+    }
+
+    @Test
+    public void teamsCanSetTheirAttributes(){
+        team.add(athlete1);
+        team.add(athlete2);
+        team.calculateAttributes();
+        assertEquals(45, team.getStrength());
+        assertEquals(85, team.getAgility());
+        assertEquals(65, team.getCoordination());
+        assertEquals(75, team.getConstitution());
+        assertEquals(80, team.getSpeed());
     }
 }

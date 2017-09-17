@@ -102,7 +102,7 @@ public class EventTest {
     public void canTakeInTeamsOfAthletes(){
         team1.add(athlete2);
         team1.add(athlete3);
-        event.addTeam(team1);
+        event.addTeamMembersIndividually(team1);
         assertEquals(2, event.getCompetitors().size());
     }
 
@@ -110,10 +110,20 @@ public class EventTest {
     public void canLimitPlayerEntrants(){
         team1.add(athlete2);
         team1.add(athlete3);
-        event.addTeam(team1);
+        event.addTeamMembersIndividually(team1);
         event.addIndividual(athlete1);
         event.addIndividual(athlete4);
         assertEquals(3, event.getCompetitors().size());
+    }
+
+    @Test
+    public void allowTeamsToCompeteAgainstOneAnother(){
+        team1.add(athlete2);
+        team1.add(athlete3);
+        team2.add(athlete1);
+        event.addGroup(team1);
+        event.addGroup(team2);
+        assertEquals(2, event.getCompetitors().size());
     }
 
 

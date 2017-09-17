@@ -64,7 +64,7 @@ public class Event {
         return newMedal;
     }
 
-    public void giveMedal(MedalType medal, Athlete competitor){
+    public void giveMedal(MedalType medal, Competitors competitor){
         Medal medalToGive = getMedalByType(medal);
         competitor.receive(medalToGive);
         removeMedalFromEvent(medalToGive);
@@ -89,7 +89,7 @@ public class Event {
         }
     }
 
-    public void addTeam(Team team) {
+    public void addTeamMembersIndividually(Team team) {
         for (Competitors athlete: team.getMembers()) {
             if (!atMaximumEntrants()) {
                 this.competitors.add(athlete);
@@ -104,24 +104,29 @@ public class Event {
         return false;
     }
 
-    public String compete(ArrayList<Competitors> competitors){
-        Athlete firstPlace = null;
-        Athlete secondPlace = null;
-        Athlete thirdPlace = null;
+    public void addGroup(Team team) {
+        team.calculateAttributes();
+        competitors.add(team);
+    }
+
+    public String compete(){
+        Competitors firstPlace = null;
+        Competitors secondPlace = null;
+        Competitors thirdPlace = null;
         int firstScore = 0;
         int secondScore = 0;
         int thirdScore = 0;
-        for(Competitors athlete: competitors){
-            int currentScore = athlete.getStrength();
+        for(Competitors competitor: competitors){
+            int currentScore = referee.judgeAthletePerformance(competitor);
             if(currentScore > firstScore){
-                firstPlace = athlete;
+                firstPlace = competitor;
                 firstScore = currentScore;
             }else  if((currentScore < firstScore) && (currentScore > secondScore)){
-                    secondPlace = athlete;
+                    secondPlace = competitor;
                     secondScore = currentScore;
                 }else{
                     if ((currentScore < secondScore) && (currentScore > thirdScore)){
-                        thirdPlace = athlete;
+                        thirdPlace = competitor;
                         thirdScore = currentScore;
                 }
             }
@@ -130,11 +135,12 @@ public class Event {
         giveMedal(MedalType.SILVER, secondPlace);
         giveMedal(MedalType.BRONZE, thirdPlace);
 
-        return "After intesnse competition, first place and gold go to " + firstPlace.getName() +
+        return "After intense competition, first place and gold go to " + firstPlace.getName() +
                 " of " + firstPlace.getCountry() +". Second place and silver for "
                 + secondPlace.getName() + " of " + secondPlace.getCountry() + ", and coming in" +
                 "third and taking away the bronze is " + thirdPlace.getName() + " of " +
                 thirdPlace.getCountry()+".";
     }
-    }
+
 }
+
