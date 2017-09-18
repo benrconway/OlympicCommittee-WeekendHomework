@@ -135,6 +135,10 @@ public class EventTest {
                 "USSR. Second place and silver for George of Australia, and coming in" +
                 "third and taking away the bronze is Johnny of USA.";
         assertEquals(expected, event.compete());
+        assertEquals(MedalType.GOLD, athlete4.getMedals().get(0).getMedalType());
+        assertEquals(MedalType.SILVER, athlete3.getMedals().get(0).getMedalType());
+        assertEquals(MedalType.BRONZE, athlete1.getMedals().get(0).getMedalType());
+
     }
 
     @Test

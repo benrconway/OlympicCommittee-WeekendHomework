@@ -61,4 +61,16 @@ public class TeamTest {
         assertEquals("Bonny", team.memberByIndex(0).getName());
     }
 
+    @Test
+    public void canGetAttributes(){
+        team.add(athlete1);
+        team.add(athlete2);
+        assertEquals(45, team.getStrength());
+        assertEquals(85, team.getAgility());
+        assertEquals(65, team.getCoordination());
+        assertEquals(75, team.getConstitution());
+        assertEquals(80, team.getSpeed());
+
+    }
+
 }
