@@ -15,25 +15,25 @@ public class Athlete implements Competitors{
     private int strength;
     private int agility;
     private int coordination;
-    private int constituion;
+    private int constitution;
     private int speed;
 
     public Athlete(String name, String country,
-                   int strength, int agility, int coordination, int constituion, int speed){
+                   int strength, int agility, int coordination, int constitution, int speed){
         this.name = name;
         this.country = country;
         this.medals = new ArrayList<>();
         this.agility = agility;
         this.strength = strength;
         this.coordination = coordination;
-        this.constituion = constituion;
+        this.constitution = constitution;
         this.speed = speed;
 
 //        Random random = new Random();
 //        this.strength = random.nextInt(100);
 //        this.agility = random.nextInt(100);
 //        this.coordination = random.nextInt(100);
-//        this.constituion = random.nextInt(100);
+//        this.constitution = random.nextInt(100);
 
     }
 
@@ -62,7 +62,7 @@ public class Athlete implements Competitors{
     }
 
     public int getConstitution() {
-        return constituion;
+        return constitution;
     }
 
     public int getSpeed(){

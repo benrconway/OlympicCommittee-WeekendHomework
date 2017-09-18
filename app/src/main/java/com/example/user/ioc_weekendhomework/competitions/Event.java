@@ -83,9 +83,9 @@ public class Event {
     }
 
 
-    public void addIndividual(Competitors athlete) {
+    public void addCompetitor(Competitors competitor) {
         if(!atMaximumEntrants()) {
-            competitors.add(athlete);
+            competitors.add(competitor);
         }
     }
 
@@ -104,10 +104,6 @@ public class Event {
         return false;
     }
 
-    public void addGroup(Team team) {
-        team.calculateAttributes();
-        competitors.add(team);
-    }
 
     public String compete(){
         Competitors firstPlace = null;
@@ -122,10 +118,13 @@ public class Event {
                 thirdPlace = secondPlace;
                 secondPlace = firstPlace;
                 firstPlace = competitor;
+                thirdScore = secondScore;
+                secondScore = firstScore;
                 firstScore = currentScore;
             }else  if((currentScore < firstScore) && (currentScore > secondScore)){
                     thirdPlace = secondPlace;
                     secondPlace = competitor;
+                    thirdScore = secondScore;
                     secondScore = currentScore;
                 }else{
                     if ((currentScore < secondScore) && (currentScore > thirdScore)){

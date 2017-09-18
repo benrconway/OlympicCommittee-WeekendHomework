@@ -1,13 +1,11 @@
 package com.example.user.ioc_weekendhomework;
 
 import com.example.user.ioc_weekendhomework.competitions.Event;
-import com.example.user.ioc_weekendhomework.competitions.LongDistanceRunJudge;
 import com.example.user.ioc_weekendhomework.competitions.Referee;
 import com.example.user.ioc_weekendhomework.competitions.StrengthJudge;
 import com.example.user.ioc_weekendhomework.medals.Medal;
 import com.example.user.ioc_weekendhomework.medals.MedalType;
 import com.example.user.ioc_weekendhomework.participants.Athlete;
-import com.example.user.ioc_weekendhomework.participants.Competitors;
 import com.example.user.ioc_weekendhomework.participants.Team;
 
 import org.junit.Before;
@@ -95,7 +93,7 @@ public class EventTest {
 
     @Test
     public void canTakeInCompetitorsIndividually(){
-        event.addIndividual(athlete1);
+        event.addCompetitor(athlete1);
         assertEquals(1, event.getCompetitors().size());
     }
 
@@ -112,8 +110,8 @@ public class EventTest {
         team1.add(athlete2);
         team1.add(athlete3);
         event.addTeamMembersIndividually(team1);
-        event.addIndividual(athlete1);
-        event.addIndividual(athlete4);
+        event.addCompetitor(athlete1);
+        event.addCompetitor(athlete4);
         assertEquals(3, event.getCompetitors().size());
     }
 
@@ -122,17 +120,17 @@ public class EventTest {
         team1.add(athlete2);
         team1.add(athlete3);
         team2.add(athlete1);
-        event.addGroup(team1);
-        event.addGroup(team2);
+        event.addCompetitor(team1);
+        event.addCompetitor(team2);
         assertEquals(2, event.getCompetitors().size());
     }
 
 
     @Test
     public void canRunCompetitionCompeteIndividualEvent(){
-        event.addIndividual(athlete1);
-        event.addIndividual(athlete3);
-        event.addIndividual(athlete4);
+        event.addCompetitor(athlete1);
+        event.addCompetitor(athlete3);
+        event.addCompetitor(athlete4);
         String expected = "After intense competition, first place and gold go to Georgina of " +
                 "USSR. Second place and silver for George of Australia, and coming in" +
                 "third and taking away the bronze is Johnny of USA.";
@@ -146,8 +144,8 @@ public class EventTest {
         team1.add(athlete3);
         team2.add(athlete1);
         team2.add(athlete5);
-        event.addGroup(team1);
-        event.addGroup(team2);
+        event.addCompetitor(team1);
+        event.addCompetitor(team2);
         String expected = "After intense competition, first place and gold go to Team USA of USA" +
                 ". Second place and silver for Team Australia of Australia.";
         assertEquals(expected, event.compete() );
